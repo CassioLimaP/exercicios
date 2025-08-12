@@ -24,13 +24,17 @@
 
 # DICA: utilize os simbolos copas (♥), ouros (♦), espadas (♠) e paus (♣) para representar os naipes.
 # DICA: utilize a funcao random.shuffle (modulo random) para embaralhar
-import biblioteca_cassio as casslib 
+import biblioteca_cassio as casslib
+escolha_inicial = int(0)
 controle = True
 baralhos = []
+
 entrada = ""
 embaralhar = False
 coringa = False
+mao_dos_jogadores = []
 qtd_baralhos = int(0)
+qtd_jogadores = int(0)
 while controle:
     print("escolha a opção:\n[1]gerar baralho\n[2]mostrar baralho")
     print("[3]dar as cartas \n[4]mostrar jogadores")
@@ -48,10 +52,12 @@ while controle:
 
     elif escolha_inicial == 2:
         casslib.mostrar_baralho(baralhos) 
-    #elif escolha_inicial == 3:
-    #    arg
-    #elif escolha_inicial == 4:
-    #    arg
+    elif escolha_inicial == 3:
+        qtd_jogadores = int(input("para quantas pessoas voce quer distribuir as cartas? "))
+        mao_dos_jogadores = casslib.dar_cartas(baralhos, qtd_jogadores)
+
+    elif escolha_inicial == 4:
+        casslib.mostrar_mao_dos_jogadores(mao_dos_jogadores)
     entrada = input("\ncontinuar? digite [1] ou [0]: ")
     controle = (entrada == "1")
 print("fim do programa!")
